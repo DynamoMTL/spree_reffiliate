@@ -1,5 +1,5 @@
 module Spree
-  class ReffiliateController < Spree::StoreController
+  class ReffiliateController < Spree::BaseController
     def referral
       session[:referral] = params[:code]
       redirect_to root_path
