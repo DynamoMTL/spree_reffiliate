@@ -2,7 +2,9 @@ module Spree
   class ReffiliateController < Spree::BaseController
     def referral
       session[:referral] = params[:code]
-      redirect_to root_path
+      respond_to do |format|
+        format.json { head :ok }
+      end
     end
     def affiliate
       session[:affiliate] = params[:path]
