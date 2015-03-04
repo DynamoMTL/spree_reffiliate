@@ -15,7 +15,7 @@ module Spree
     end
     
     def referred_count
-      referral.referred_records.count
+      referral ? referral.referred_records.count : 0
     end
 
     def referred?
