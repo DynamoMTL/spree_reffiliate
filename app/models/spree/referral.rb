@@ -18,7 +18,7 @@ module Spree
     protected
       def attach_code
         self.code = loop do
-          code =  (0...8).map { (65 + rand(26)).chr }.join
+          code = (0...8).map { ('a'..'z').to_a[rand(26)] }.join
           break code unless Referral.exists?(code: code)
         end
       end
