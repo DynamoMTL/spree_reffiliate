@@ -1,5 +1,8 @@
 module Spree
   class ReffiliateController < Spree::BaseController
+    skip_before_action :check_for_user_or_api_key
+    skip_before_action :authenticate_user
+
     def referral
       session[:referral] = params[:code]
       respond_to do |format|
