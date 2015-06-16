@@ -4,13 +4,13 @@ module Spree
     skip_before_action :authenticate_user
 
     def referral
-      session[:referral] = params[:code]
+      cookies[:referral] = params[:code]
       respond_to do |format|
         format.json { head :ok }
       end
     end
     def affiliate
-      session[:affiliate] = params[:path]
+      cookies[:affiliate] = params[:path]
       affiliate = Spree::Affiliate.find_by(:path => params[:path])
       if affiliate.nil? or affiliate.partial.blank? or !partial_exists affiliate.partial
         redirect_to(root_path)

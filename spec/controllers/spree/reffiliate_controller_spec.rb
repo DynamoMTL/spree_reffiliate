@@ -6,20 +6,20 @@ describe Spree::ReffiliateController, :type => :controller do
       spree_get :referral
       expect(response).to redirect_to('/')
     end
-    it "creates session variable with referral code" do
+    it "creates cookie variable with referral code" do
       code = 'referral-code'
       spree_get :referral, code: code
-      expect(session[:referral]).to eq(code)
+      expect(cookies[:referral]).to eq(code)
     end
   end
   context "affiliate hyperlink" do
     before (:each) do
       @affiliate = FactoryGirl.create(:affiliate)
     end
-    it "creates session variable with affiliate path" do
+    it "creates cookie variable with affiliate path" do
       path = 'affiliate'
       spree_get :affiliate, :path => path
-      expect(session[:affiliate]).to eq(path)
+      expect(cookies[:affiliate]).to eq(path)
     end
     it "redirects to root path if path params is nil" do
       spree_get :affiliate
